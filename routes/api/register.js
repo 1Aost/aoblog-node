@@ -19,7 +19,8 @@ router.post("/register",(req,res)=>{
                 data:null
             })
         }
-        connection.query("insert into users values (?,?,?)",[0,username,password],(err,results,fields)=>{
+        // 第四个参数：默认头像
+        connection.query("insert into users values(?,?,?,?)",[0,username,password,'./avatar/user-default.png'],(err,results,fields)=>{
             if(err) {
                 return res.json({
                     code:"1005",

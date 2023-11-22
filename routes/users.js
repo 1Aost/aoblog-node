@@ -112,6 +112,7 @@ router.post("/token",(req,res)=>{
   }
   // 验证Token是否有效
   jwt.verify(token, secret, (err, data) => {
+    console.log(data);
     if (err) {
       return res.json({
         code: "1111",

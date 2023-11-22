@@ -44,9 +44,9 @@ router.post('/new', function(req, res) {
       return new Promise((resolve, reject) => {
           connection.query(sql,[id], (err, results, fields) => {
               if (err) {
-                  reject(err);
+                reject(err);
               } else {
-                  resolve(results);
+                resolve(results);
               }
           });
       });

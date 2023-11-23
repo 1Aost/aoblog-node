@@ -4,18 +4,18 @@ const connection=require("../../config/db")
 
 router.get("/all",(req,res)=>{
     connection.query("select * from types",(err,results,fields)=>{
-        if(err) {
-            return res.json({
-                code:"7000",
-                msg:"出现错误",
-                data:null
-            })
-        }
-        res.json({
-            code:"0000",
-            msg:"成功获取所有类型",
-            data:results
+      if(err) {
+        return res.json({
+          code:"7000",
+          msg:"出现错误",
+          data:null
         })
+      }
+      res.json({
+        code:"0000",
+        msg:"成功获取所有类型",
+        data:results
+      })
     })
 })
 

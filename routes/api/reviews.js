@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
       console.log(err);
       return res.json({
         code: 5000,
-        msg: "请稍后重试",
+        msg: err.message,
         data: null
       })
     }
@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
         console.log(err);
         return res.json({
           code: 5000,
-          msg: "请稍后重试",
+          msg: err.message,
           data: null
         });
       }
@@ -148,7 +148,7 @@ router.get("/reviewsById", (req, res) => {
       console.log(err);
       return res.json({
         code: 5000,
-        msg: "请稍后重试",
+        msg: err.message,
         data: null
       })
     }

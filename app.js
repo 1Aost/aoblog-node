@@ -5,18 +5,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 //解决跨域问题
-const cors=require('cors');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const loginRouter=require("./routes/api/login")
-const registerRouter=require("./routes/api/register")
-const articlesRouter=require("./routes/api/articles")
-const reviewsRouter=require("./routes/api/reviews")
-const adminRouter=require("./routes/api/admin")
-const typeRouter=require("./routes/api/types")
-const uploadRouter=require("./routes/api/upload")
-const likesRouter=require("./routes/api/likes")
+const usersRouter = require('./routes/api/users');
+const articlesRouter = require("./routes/api/articles")
+const reviewsRouter = require("./routes/api/reviews")
+const adminRouter = require("./routes/api/admin")
+const typeRouter = require("./routes/api/types")
+const uploadRouter = require("./routes/api/upload")
+const likesRouter = require("./routes/api/likes")
 
 const app = express();
 
@@ -31,27 +29,25 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users' , usersRouter);
-app.use('/api', loginRouter);
-app.use('/api', registerRouter);
-app.use("/api/articles",articlesRouter);
-app.use("/api/reviews",reviewsRouter)
-app.use("/api/admin",adminRouter)
-app.use("/api/types",typeRouter);
-app.use("/api/Upload",uploadRouter);
-app.use("/api/likes",likesRouter);
+app.use('/api/users', usersRouter);
+app.use("/api/articles", articlesRouter);
+app.use("/api/reviews", reviewsRouter)
+app.use("/api/admin", adminRouter)
+app.use("/api/types", typeRouter);
+app.use("/api/Upload", uploadRouter);
+app.use("/api/likes", likesRouter);
 // 进行404响应
-app.all("*",(req,res)=>{
+app.all("*", (req, res) => {
   res.end("404")
 })
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
